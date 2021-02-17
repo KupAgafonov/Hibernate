@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+
+        <!--         Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!--         File Appender -->
+        <File name="File" fileName="10_SQLAndHibernate/Hibernate/src/main/resources/logs/hibernate.log">
+            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <File name="Save" fileName="10_SQLAndHibernate/Hibernate/src/main/resources/logs/save.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss}%msg%n"/>
+            <Filters>
+                <MarkerFilter marker="SAVE"/>
+            </Filters>
+        </File>
+
+    </appenders>
+
+    <loggers>
+
+        <Logger name="org.hibernate" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Logger>
+
+        <Logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Logger>
+
+<!--        <Root level="error">-->
+<!--            <AppenderRef ref="Console"/>-->
+<!--            <AppenderRef ref="File"/>-->
+<!--        </Root>-->
+
+        <root level="info">
+            <AppenderRef ref="Console"/>
+            <appender-ref ref="Save"/>
+            <AppenderRef ref="File"/>
+        </root>
+
+    </loggers>
+
+</configuration>
+
+
+
